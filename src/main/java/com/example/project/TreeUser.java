@@ -3,9 +3,17 @@ package com.example.project;
 public class TreeUser {
     public static <T> int countLeaves(BT<T> bt) {
         throw new UnsupportedOperationException("Not supported yet.");
-		// Write the method countLeafs that should return the number of leaf nodes in the tree. A leaf node is a node that has no children.
-        // assume the following method exists in the ADT: isLeaf (boolean flag): requires: Binary tree is not empty.
-        // input: None. results: if the current node of the binary tree is a leaf then flag is set to true otherwise it is set to false. output: flag.
-        // you can't call countLeaves from BT.java
+        if (bt == null) {
+           return 0;
+        }
+        boolean[] bool = new boolean[1];
+        bt.isLeaf(bool);
+        if (bool[0]) {
+            return 1;
+        }
+        int leftLeaves = countLeaves(bt.getLeft());
+        int rightLeaves = countLeaves(bt.getRight());
+        return leftLeaves + rightLeaves;
+    }
     }
 }

@@ -100,6 +100,12 @@ public class BT<T> {
 	}
 	public int countLeaves() {
 		throw new UnsupportedOperationException("Not supported yet.");
-		// Write the method countLeafs that should return the number of leaf nodes in the tree. A leaf node is a node that has no children.
+		return clsup(root);
 	}
+	private int clsup(BTNode<T> bt){
+		if(bt == null)
+			return 0;
+		if(bt.left == null && bt.right == null)
+			return 1;
+		return clsup(bt.left) + clsup(bt.rifht);
 }
